@@ -3,9 +3,9 @@ from app.services.user_service import login,creat_room, create_user, get_users,g
 user_bp = Blueprint('user_bp', __name__)
 
 # GET all users
-# @user_bp.route('/', methods=['GET'])
-# def get_all_users():
-#     return jsonify(get_users())
+@user_bp.route('/', methods=['GET'])
+def get_all_users():
+    return jsonify(get_users())
 
 
 # get rooms data on particular id
