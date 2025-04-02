@@ -3,3 +3,4 @@ pymongo
 python-dotenv
 flask_pymongo 
 flask_jwt_extended
+flask_bcrypt
