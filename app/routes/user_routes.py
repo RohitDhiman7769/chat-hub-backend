@@ -1,20 +1,12 @@
 from flask import Blueprint, jsonify, request
-from app.services.user_service import login,creat_room, create_user, get_users,get_rooms_list,search_user_name,get_rooms_chats
+from app.services.user_service import report_user_id,login,creat_room,fetch_added_users,profile, fetch_user_profile,  update_initial_popup_status,confirm_pending_req, create_user,creat_friends,get_users,get_rooms_list,search_user_name,get_rooms_chats
 user_bp = Blueprint('user_bp', __name__)
 
 # GET all users
-@user_bp.route('/', methods=['GET'])
+@user_bp.route('/fetch-all-users', methods=['GET'])
 def get_all_users():
-    return jsonify(get_users())
+    return get_users()
 
-
-# get rooms data on particular id
-
-
-# GET a single user by ID
-# @user_bp.route('/<int:user_id>', methods=['GET'])
-# def get_single_user(user_id):
-#     return jsonify(get_user(user_id))
 
 # Sign-up POST API
 @user_bp.route('/sign-up', methods=['POST'])
@@ -48,19 +40,41 @@ def creat_new_room():
 @user_bp.route('/search-user', methods=['GET'])
 def search_user():
     return search_user_name()
-# Login Post API
-# @user_bp.route('/log-in', methods=['POST'])
-# def forget_email():
-#     data = request.json
-#     return forgetEmail(data)
 
-# PUT (Update) a user
-# @user_bp.route('/<int:user_id>', methods=['PUT'])
-# def modify_user(user_id):
-#     data = request.json
-#     return jsonify(update_user(user_id, data))
+#get specific room chat
+@user_bp.route('/profile', methods=['GET'])
+def get_profile():
+    return profile()
 
-# DELETE a user
-# @user_bp.route('/<int:user_id>', methods=['DELETE'])
-# def remove_user(user_id):
-#     return jsonify(delete_user(user_id))
+#Get selected initial users id for adding as a friend
+@user_bp.route('/add-friend', methods=['POST'])
+def creat_new_friends():
+    data = request.json
+    return creat_friends(data)
+
+# confirm pending request
+@user_bp.route('/confirm-request', methods=['POST'])
+def confirm_request():
+    data = request.json
+    return confirm_pending_req(data)
+
+#fetch added friend list
+@user_bp.route('/added-users-list', methods=['GET'])
+def get_added_users_list():
+    return fetch_added_users()
+
+# update initial login status
+@user_bp.route('/update-initial-status', methods=['GET'])
+def update_initial_status():
+    return update_initial_popup_status()
+
+
+#fetch particular user data 
+@user_bp.route('/get-single-user-profile-data', methods=['GET'])
+def get_profile_data():
+    return fetch_user_profile()
+
+#report user id 
+@user_bp.route('/report-user', methods=['GET'])
+def report_user():
+    return report_user_id()
