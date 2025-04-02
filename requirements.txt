@@ -2,3 +2,4 @@ Flask==3.0.3
 pymongo
 python-dotenv
 flask_pymongo 
+flask_jwt_extended
