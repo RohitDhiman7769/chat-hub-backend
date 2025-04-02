@@ -13,7 +13,7 @@ password = urllib.parse.quote_plus(passw)  # Encodes '@' to '%40'
 # Corrected connection string
 # CONNECTION_STRING = f"mongodb+srv://{username}:{password}@cluster0.hy8a5.mongodb.net/"
 CONNECTION_STRING =f"mongodb+srv://{username}:{password}@cluster0.hy8a5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',CONNECTION_STRING)
+# print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',CONNECTION_STRING)
 client = pymongo.MongoClient(CONNECTION_STRING)
 database = client.get_database('Chat-hubb')
 user_collection = pymongo.collection.Collection(database, 'users')
