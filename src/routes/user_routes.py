@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.services.user_service import report_user_id,login,creat_room,fetch_added_users,profile, fetch_user_profile,  update_initial_popup_status,confirm_pending_req, create_user,creat_friends,get_users,get_rooms_list,search_user_name,get_rooms_chats
+from src.services.user_service import report_user_id,login,creat_room,fetch_added_users,profile, fetch_user_profile,  update_initial_popup_status,confirm_pending_req, create_user,creat_friends,get_users,get_rooms_list,search_user_name,get_rooms_chats
 user_bp = Blueprint('user_bp', __name__)
 
 # GET all users

@@ -1,5 +1,5 @@
 from flask import Flask
-from app.routes import user_routes
+from src.routes import user_routes
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 import os
